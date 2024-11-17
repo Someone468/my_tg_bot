@@ -4,7 +4,7 @@ from botcoin import coin_flip
 import time, threading, schedule
 import telebot
 
-bot = telebot.TeleBot('Токен бота не покажу)')
+bot = telebot.TeleBot('7662970988:AAGMJWG12AImQCRC8_IKDZ5Ai-UEg7_-Iwc')
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -55,7 +55,7 @@ threading.Thread(target=schedule_runner, daemon=True).start()
 
 @bot.message_handler(commands=['help'])
 def send_commands(message):
-    bot.reply_to(message, '/hello - Поздороваться\n/bye - Попрощаться\n/gen_pass - Сгенерировать безопасный пароль\n/coin_flip - Подкинуть монетку')
+    bot.reply_to(message, '/hello - Поздороваться\n/bye - Попрощаться\n/gen_pass - Сгенерировать безопасный пароль\n/coin_flip - Подкинуть монетку\n/set <секунды> - Поставить таймер')
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
