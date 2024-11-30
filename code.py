@@ -1,6 +1,7 @@
 from configbot import TOKEN_bot
 from botlogic import gen_pass
 from botcoin import coin_flip
+import random
 import time, threading, schedule
 import telebot
 
@@ -39,7 +40,7 @@ def set_timer(message):
         schedule.every(sec).seconds.do(beep, message.chat.id).tag(str(message.chat.id))
         bot.reply_to(message, f"Таймер установлен на каждые {sec} секунд!")
     else:
-        bot.reply_to(message, 'Неправильный формат. Используйте: /set <seconds>')
+        bot.reply_to(message, 'Неправильный формат. Используйте: /set <секунды>')
 
 @bot.message_handler(commands=['unset'])
 def unset_timer(message):
@@ -55,7 +56,24 @@ threading.Thread(target=schedule_runner, daemon=True).start()
 
 @bot.message_handler(commands=['help'])
 def send_commands(message):
-    bot.reply_to(message, '/hello - Поздороваться\n/bye - Попрощаться\n/gen_pass - Сгенерировать безопасный пароль\n/coin_flip - Подкинуть монетку\n/set <секунды> - Поставить таймер')
+    bot.reply_to(message, '/hello - Поздороваться\n/bye - Попрощаться\n/gen_pass - Сгенерировать безопасный пароль\n/coin_flip - Подкинуть монетку\n/set <секунды> - Поставить таймер\n/mem - Получить мем про программирование(у каждого разный шанс выпасть!)')
+
+@bot.message_handler(commands=['mem'])
+def send_mem(message):
+    meme_chance = random.randint(1,10)
+    if meme_chance <= 5:
+        with open(f'images\meme{1}.jpg', 'rb') as f:
+            bot.send_photo(message.chat.id, f)
+            bot.reply_to(message, "Мем обычной редкости!")
+    elif meme_chance > 5 and meme_chance <= 8:
+        with open(f'images\meme{2}.jpg', 'rb') as f:
+            bot.send_photo(message.chat.id, f)
+            bot.reply_to(message, "Мем необычной редкости!")
+    elif meme_chance > 8 and meme_chance <= 10:
+        with open(f'images\meme{3}.jpg', 'rb') as f:
+            bot.send_photo(message.chat.id, f)
+            bot.reply_to(message, "Мем большой редкости!")
+
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
