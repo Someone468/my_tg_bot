@@ -55,7 +55,7 @@ threading.Thread(target=schedule_runner, daemon=True).start()
 
 @bot.message_handler(commands=['help'])
 def send_commands(message):
-    bot.reply_to(message, '/hello - Поздороваться\n/bye - Попрощаться\n/gen_pass - Сгенерировать безопасный пароль\n/coin_flip - Подкинуть монетку\n/set <секунды> - Поставить таймер\n/mem - Получить мем про программирование(у каждого разный шанс выпасть!)')
+    bot.reply_to(message, '/hello - Поздороваться\n/bye - Попрощаться\n/gen_pass - Сгенерировать безопасный пароль\n/coin_flip - Подкинуть монетку\n/set <секунды> - Поставить таймер\n/mem - Получить мем про программирование(у каждого разный шанс выпасть!)\n/watermelon - Арбуз')
 
 @bot.message_handler(commands=['mem'])
 def send_mem(message):
