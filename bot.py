@@ -4,7 +4,7 @@ import random
 import time, threading, schedule
 import telebot
 
-bot = telebot.TeleBot('Не дам)')
+bot = telebot.TeleBot('7662970988:AAGMJWG12AImQCRC8_IKDZ5Ai-UEg7_-Iwc')
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -72,6 +72,26 @@ def send_mem(message):
         with open(f'images\meme{3}.jpg', 'rb') as f:
             bot.send_photo(message.chat.id, f)
             bot.reply_to(message, "Мем большой редкости!")
+
+@bot.message_handler(commands=['watermelon'])
+def send_mem(message):
+    watermelon_chance = random.randint(1,11)
+    if watermelon_chance <= 5:
+        with open(f'images\watermelon{1}.jpg', 'rb') as f:
+            bot.send_photo(message.chat.id, f)
+            bot.reply_to(message, "Арбуз обычной редкости!")
+    elif watermelon_chance > 5 and watermelon_chance <= 8:
+        with open(f'images\watermelon{2}.jpg', 'rb') as f:
+            bot.send_photo(message.chat.id, f)
+            bot.reply_to(message, "Арбуз необычной редкости!")
+    elif watermelon_chance > 8 and watermelon_chance <= 10:
+        with open(f'images\watermelon{3}.jpg', 'rb') as f:
+            bot.send_photo(message.chat.id, f)
+            bot.reply_to(message, "Арбуз большой редкости!")
+    elif watermelon_chance > 10 and watermelon_chance <= 11:
+        with open(f'images\watermelon{4}.jpg', 'rb') as f:
+            bot.send_photo(message.chat.id, f)
+            bot.reply_to(message, "Секретный арбуз!")
 
 
 @bot.message_handler(func=lambda message: True)
