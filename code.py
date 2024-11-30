@@ -1,11 +1,10 @@
-from configbot import TOKEN_bot
 from botlogic import gen_pass
 from botcoin import coin_flip
 import random
 import time, threading, schedule
 import telebot
 
-bot = telebot.TeleBot('7662970988:AAGMJWG12AImQCRC8_IKDZ5Ai-UEg7_-Iwc')
+bot = telebot.TeleBot('Не дам)')
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
